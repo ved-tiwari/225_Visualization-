@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>KD-Tree Visualizer – Pan/Zoom Tree & Partition View</title>
+    <!-- D3.js library for the tree visualization -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>KD-Tree Visualizer</h1>
+        <div class="instructions">
+            <p>Enter 2D points (one per line) in the format: <code>x y</code> (separated by a space). For example:</p>
+            <pre>
+13 15
+6 12
+9 1
+2 7
+10 19
+      </pre>
+            <p>
+                After clicking "Visualize KD-Tree", use the "Next Step" button to reveal each node’s point (labeled with
+                its name and coordinates)
+                and then its splitting line along with its full partition region (outlined as a dashed rectangle). The
+                KD‑tree is rendered on the right using D3.
+                You can pan and zoom the tree visualization (scroll or drag with your mouse) to explore deeper levels.
+            </p>
+        </div>
+
+        <form id="pointForm">
+            <label for="points"><strong>Points:</strong></label>
+            <textarea id="points" placeholder="Enter points, one per line (e.g., 3 6)"></textarea>
+            <br>
+            <button type="submit">Visualize KD-Tree</button>
+        </form>
+
+        <div style="text-align:center; margin-bottom:20px;">
+            <button id="prevStep" disabled>Previous Step</button>
+            <button id="nextStep" disabled>Next Step</button>
+        </div>
+
+        <div class="side-by-side">
+            <div class="viz-container">
+                <h2>2D Partition Visualization</h2>
+                <canvas id="canvas" width="600" height="600"></canvas>
+            </div>
+            <div class="viz-container">
+                <h2>KD-Tree Structure</h2>
+                <!--Tree vizualization here-->
+                <svg id="treeSVG" viewBox="0 0 600 600">
+                    <g id="treeGroup"></g>
+                </svg>
+            </div>
+        </div>
+
+        <div class="instructions">
+            Click to view the algorithm
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
